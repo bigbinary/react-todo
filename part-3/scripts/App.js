@@ -8,7 +8,13 @@ class DisplayList extends React.Component {
   }
 
   displayItem(item) {
-    return <li key={item}>
+
+    var style = {
+      padding: '5px',
+      fontSize: '20px'
+    };
+
+    return <li key={item} style={style}>
             {item}
             <a  href='#'
                 onClick={this.props.handleClickForDelete.bind(this, item)}>[x]</a>
