@@ -70,6 +70,10 @@ export default class App extends React.Component {
           <button>Submit</button>
         </form>
 
+        <p>
+          Count of pending tasks : { this.state.items.length }
+        </p>
+
         <DisplayList  items={this.state.items}
                       handleClickForDelete={this.handleClickForDelete} />
 
