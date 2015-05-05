@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class DisplayList extends React.Component {
+class DisplayList extends React.Component {
 
   constructor() {
     super();
