@@ -22,7 +22,7 @@ class DisplayList extends React.Component {
     };
 
     return <li key={item} style={style}>
-            <input type="checkbox" name="{item}" value="{item}" checked={this.state.done} onClick={this.handleClickForCompletion}  />
+            <input type="checkbox" name="{item}" value="{item}" checked={this.state.done} onChange={this.handleClickForCompletion}  />
             {item}
             <a  href='#'
                 onClick={this.props.handleClickForDelete.bind(this, item)}>[x]</a>
