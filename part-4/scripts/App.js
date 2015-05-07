@@ -5,11 +5,13 @@ class DisplayList extends React.Component {
   constructor() {
     super();
     this.displayItem = this.displayItem.bind(this);
+    this.handleClickForCompletion = this.handleClickForCompletion.bind(this);
+    this.state = { done: false }
   }
 
 
   handleClickForCompletion(e) {
-    console.log('trapped event');
+    this.setState({ done: !this.state.done })
   }
 
   displayItem(item) {
@@ -20,7 +22,7 @@ class DisplayList extends React.Component {
     };
 
     return <li key={item} style={style}>
-            <input type="checkbox" name="{item}" value="{item}" onClick={this.handleClickForCompletion}  />
+            <input type="checkbox" name="{item}" value="{item}" checked={this.state.done} onClick={this.handleClickForCompletion}  />
             {item}
             <a  href='#'
                 onClick={this.props.handleClickForDelete.bind(this, item)}>[x]</a>
