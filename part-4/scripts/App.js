@@ -7,6 +7,11 @@ class DisplayList extends React.Component {
     this.displayItem = this.displayItem.bind(this);
   }
 
+
+  handleClickForCompletion(e) {
+    console.log('trapped event');
+  }
+
   displayItem(item) {
 
     var style = {
@@ -15,7 +20,7 @@ class DisplayList extends React.Component {
     };
 
     return <li key={item} style={style}>
-            <input type="checkbox" name="{item}" value="{item}"  />
+            <input type="checkbox" name="{item}" value="{item}" onClick={this.handleClickForCompletion}  />
             {item}
             <a  href='#'
                 onClick={this.props.handleClickForDelete.bind(this, item)}>[x]</a>
