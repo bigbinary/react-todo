@@ -15,6 +15,8 @@ class DisplayItem extends React.Component {
     if (done) {
       console.log('setting state');
       this.setState({ style: { textDecoration: 'line-through' }})
+    } else {
+      this.setState({ style: { }})
     }
   }
 
