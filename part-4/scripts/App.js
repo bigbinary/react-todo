@@ -1,34 +1,49 @@
 import React from 'react';
 
-class DisplayList extends React.Component {
+class DisplayItem extends React.Component {
 
   constructor() {
     super();
-    this.displayItem = this.displayItem.bind(this);
     this.handleClickForCompletion = this.handleClickForCompletion.bind(this);
     this.state = { done: false }
   }
-
 
   handleClickForCompletion(e) {
     this.setState({ done: !this.state.done })
   }
 
-  displayItem(item) {
+  render() {
 
     var style = {
       padding: '5px',
       fontSize: '20px'
     };
 
-    return <li key={item} style={style}>
-            <input type="checkbox" name="{item}" value="{item}" checked={this.state.done} onChange={this.handleClickForCompletion}  />
-            {item}
-            <a  href='#'
-                onClick={this.props.handleClickForDelete.bind(this, item)}>[x]</a>
-           </li>
+    console.log(this.props.item);
+
+    return (
+      <li key={this.props.item} style={style}>
+        <input type="checkbox" name="{this.props.item}" value="{this.props.item}" checked={this.state.done} onChange={this.handleClickForCompletion}  />
+        {this.props.item}
+        <a  href='#' onClick={this.props.handleClickForDelete.bind(this, this.props.item)}>[x]</a>
+       </li>
+
+    )
   }
 
+}
+
+
+class DisplayList extends React.Component {
+
+  constructor() {
+    super();
+    this.displayItem = this.displayItem.bind(this);
+  }
+
+  displayItem(item) {
+    return <DisplayItem item={item} handleClickForDelete={this.props.handleClickForDelete} />
+  }
 
   render() {
     return (
