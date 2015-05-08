@@ -5,11 +5,17 @@ class DisplayItem extends React.Component {
   constructor() {
     super();
     this.handleClickForCompletion = this.handleClickForCompletion.bind(this);
-    this.state = { done: false }
+    this.state = { done: false, style: {} }
   }
 
   handleClickForCompletion(e) {
-    this.setState({ done: !this.state.done })
+    var done = !this.state.done;
+    this.setState({ done: done })
+
+    if (done) {
+      console.log('setting state');
+      this.setState({ style: { textDecoration: 'line-through' }})
+    }
   }
 
   render() {
@@ -24,7 +30,9 @@ class DisplayItem extends React.Component {
     return (
       <li key={this.props.item} style={style}>
         <input type="checkbox" name="{this.props.item}" value="{this.props.item}" checked={this.state.done} onChange={this.handleClickForCompletion}  />
-        {this.props.item}
+        <span style={ this.state.style }>
+          {this.props.item}
+        </span>
         <a  href='#' onClick={this.props.handleClickForDelete.bind(this, this.props.item)}>[x]</a>
        </li>
 
